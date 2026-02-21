@@ -68,4 +68,4 @@ Deployment-
 The project is deployed using Netlify.
 Live URL:-https://artass.netlify.app/
 
-GitHub Repository:-
+GitHub Repository:-https://github.com/Mustakimmugal/pagination_assignment.git
