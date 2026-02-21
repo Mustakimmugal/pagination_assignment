@@ -146,7 +146,7 @@ export const ArtworkTable: React.FC = () => {
 
     return (
         <div className="artwork_container">
-            <div style={{ padding: '15px 0', fontWeight: '600', fontSize: '1.1rem' }}>
+            <div style={{ padding: '15px 0', fontWeight: '600', fontSize: '1.1rem', color:"black" }}>
                 Total Records Selected: <span style={{ color: '#2196F3' }}>
                     {totalSelectedCount}
                 </span>
