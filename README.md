@@ -66,9 +66,6 @@ npm run build
 Deployment-
 
 The project is deployed using Netlify.
+Live URL:-https://artass.netlify.app/
 
-Live URL:
-
-<your-live-link-here>
-📎 GitHub Repository
-<your-github-repo-link>
+GitHub Repository:-
