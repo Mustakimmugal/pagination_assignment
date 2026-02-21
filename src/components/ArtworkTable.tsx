@@ -5,7 +5,7 @@ import { SelectionOverlay } from './SelectionOverlay';
 import { type Artwork, type ApiResponse, API_URL } from '../types';
 import axios from 'axios';
 
-// Define the structure for manual selection.
+//Define the structure for manual selection.
 
 interface ManualSelectionRecord {
     [key: number]: {
@@ -16,7 +16,7 @@ interface ManualSelectionRecord {
 
 export const ArtworkTable: React.FC = () => {
 
-    // Basic states
+    //  Basic states
 
     const [artworks, setArtworks] = useState<Artwork[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
@@ -73,39 +73,30 @@ export const ArtworkTable: React.FC = () => {
     useEffect(() => {
         const rowsToHighlight = artworks.filter((item, idx) => {
             const globalIdx = ((page - 1) * rows) + idx + 1;
-            
-            // Priority 1: Users manual click
             if (manualMap[item.id] !== undefined) {
                 return manualMap[item.id].selected;
             }
             return globalIdx <= bulkNumber;
         });
-// Prioreity 2: Bulk selection intent
-
         setSelectedRows(rowsToHighlight);
     }, [artworks, manualMap, bulkNumber, page, rows]);
 
-    //  When user clicks a checkbox in the table
+    //user clicks checkbox in the table
 
     const onSelectionChange = (e: { value: Artwork[] }) => {
         const nextMap = { ...manualMap };
         const selectedOnPageIds = new Set(e.value.map(a => a.id));
-
         artworks.forEach((item, idx) => {
             const gIdx = ((page - 1) * rows) + idx + 1;
-            const isNowSelected = selectedOnPageIds.has(item.id);
-            
-            //store the changes
+            const isNowSelected = selectedOnPageIds.has(item.id); //store the changes
             nextMap[item.id] = { selected: isNowSelected, index: gIdx };
         });
-
         setManualMap(nextMap);
     };
 
     const handleBulkSelect = (val: number) => {
         setBulkNumber(val);
-        setManualMap({});
-     // Reset manual clicks when new bulk number is enter
+        setManualMap({});   // Reset manual clicks when new bulk number is enter
     };
 
     const onPageChange = (event: any) => {
@@ -122,7 +113,6 @@ export const ArtworkTable: React.FC = () => {
     const toggleCurrentPage = () => {
         const nextMap = { ...manualMap };
         const targetSelection = !isCurrentPageFull;
-
         artworks.forEach((item, idx) => {
             const gIdx = ((page - 1) * rows) + idx + 1;
             nextMap[item.id] = { selected: targetSelection, index: gIdx };
